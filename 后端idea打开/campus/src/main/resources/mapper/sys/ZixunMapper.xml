@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hcb.sys.mapper.ZixunMapper">
+    <update id="setZiXunStatus">
+        update zixun
+        set status=1
+        where id = #{id}
+    </update>
+
+    <select id="getCustomerByZixunId" parameterType="Integer" resultType="java.lang.String">
+        SELECT c.username
+        FROM zixun z
+                 LEFT JOIN customer c ON z.cstid = c.id
+        WHERE z.id = #{id}
+    </select>
+</mapper>
